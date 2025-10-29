@@ -1,7 +1,19 @@
+import turtle as trtl
+import random as rand
+import time as time
+
 # Start Screen
+'''wn.bgpic("pink.gif")
+screen_width = 200
+screen_height = 200'''
+trtl.color = "black"
+trtl.write("Welcome to the game!", align="center", font=("Times New Roman", 50))
+trtl.hideturtle()
+
 # user will be asked for their name
 # set background for starting screen, title, and explain the game
 # click anywhere to begin
+
 
 # images
 # import images of all categories: fruits, shapes, colors, etc.
@@ -18,7 +30,6 @@
 
 # leaderboard
 # user's name will be put in the leaderboard depending on their score
-
 
 
 
