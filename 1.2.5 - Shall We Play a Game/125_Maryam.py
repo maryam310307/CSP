@@ -2,109 +2,161 @@ import turtle as trtl
 import random as rand
 import time as time
 wn = trtl.Screen()
+wn.setup(width=800, height=600)
+
 
 # Start Screen
 # set background for starting screen, title, and explain the game
 writer = trtl.Turtle()
-fruit_turtles = []
-fruits_list = ["apple.gif", "banana.gif", "blueberry.gif", "strawberry.gif", "watermelon.gif"]
+writer.hideturtle()
+writer.penup()
 
-trtl.hideturtle()
-trtl.penup()
-trtl.goto(-222,200)
-trtl.write("What is missing?", font=("Times New Roman", 50))
+writer.hideturtle()
+writer.penup()
+writer.goto(-222,200)
+writer.write("What is missing?", font=("Times New Roman", 50))
 time.sleep(2)
-trtl.clear()
+writer.clear()
 
-trtl.goto(-222,100)
-trtl.write("The function of the game is simple.", font=("Times New Roman", 25)) 
+writer.goto(-222,100)
+writer.write("The function of the game is simple.", font=("Times New Roman", 25)) 
 time.sleep(2)
-trtl.clear()
+writer.clear()
 
-trtl.goto(-222,70)
-trtl.write("You will be shown 5 images at a time," ,font=("Times New Roman", 25))
+writer.goto(-222,70)
+writer.write("You will be shown 5 images at a time," ,font=("Times New Roman", 25))
 time.sleep(2)
-trtl.clear()
+writer.clear()
 
-trtl.goto(-222,40)
-trtl.write("and they will disappear after a set amount of time.", font=("Times New Roman", 25)) 
+writer.goto(-222,40)
+writer.write("and they will disappear after a set amount of time.", font=("Times New Roman", 25)) 
 time.sleep(2)
-trtl.clear()
+writer.clear()
 
-trtl.goto(-222,10)
-trtl.write("Try to guess what is missing!" ,font=("Times New Roman", 25)) 
+writer.goto(-222,10)
+writer.write("Try to guess what is missing!" ,font=("Times New Roman", 25)) 
 time.sleep(2)
-trtl.clear()
+writer.clear()
 
-trtl.goto(-130,100)
-trtl.write("Click anywhere to begin", font=("Times New Roman", 25))
+writer.goto(-130,100)
+writer.write("Click anywhere to begin", font=("Times New Roman", 25))
 
-
-
-# click anywhere to begin and user will be asked for name
-def click_anywhere(x, y):
-    wn.onclick(None)
-    trtl.textinput("What is your name?", "")
-    trtl.clear()
-
-    wn.addshape("apple.gif")
-    apple_image = trtl.Turtle()
-    apple_image.shape("apple.gif")
-    apple_image.penup()
-    apple_image.goto(150,300)
-
-    wn.addshape("banana.gif")
-    banana_image = trtl.Turtle()
-    banana_image.shape("banana.gif")
-    banana_image.penup()
-    banana_image.goto(-100,-100)
-
-    wn.addshape("blueberry.gif")
-    blueberry_image = trtl.Turtle()
-    blueberry_image.shape("blueberry.gif")
-    blueberry_image.penup()
-    blueberry_image.goto(-300,250)
-
-    wn.addshape("strawberry.gif")
-    strawberry_image = trtl.Turtle()
-    strawberry_image.shape("strawberry.gif")
-    strawberry_image.penup()
-    strawberry_image.goto(-370,-200)
-
-    wn.addshape("watermelon.gif")
-    watermelon_image = trtl.Turtle()
-    watermelon_image.shape("watermelon.gif")
-    watermelon_image.penup()
-    watermelon_image.goto(280,-90)
-
-    time.sleep(5)
-    strawberry_image.hideturtle()
-
-wn.onscreenclick(click_anywhere)
-    
-# import images
-
-
-# timer
-# timer will show how many seconds the user has left to memorize everything on the screen before 1 disappears
-# timer will decrease every level by a few seconds
 score = 0
 font_setup = ("Times New Roman", 50, "normal")
 
 score_writer = trtl.Turtle()
 score_writer.hideturtle()
 score_writer.penup()
-score_writer.goto(160,170)
-score_writer.write(score,font=font_setup) 
+score_writer.goto(370,300)
+
+def update_score():
+    global score
+    score += 1
+    score_writer.clear()
+    score_writer.write("Score: " +str(score), font=font_setup)
+
+# click anywhere to begin and user will be asked for name
+def click_anywhere(x, y):
+    wn.onscreenclick(None)
+    writer = trtl.Turtle()
+    writer.hideturtle()
+    writer.penup()
+
+    writer.hideturtle()
+    writer.penup()
+    writer.goto(-222,200)
+    writer.write("What is missing?", font=("Times New Roman", 50))
+    time.sleep(2)
+    writer.clear()
+
+    writer.goto(-222,100)
+    writer.write("The function of the game is simple.", font=("Times New Roman", 25)) 
+    time.sleep(2)
+    writer.clear()
+
+    writer.goto(-222,70)
+    writer.write("You will be shown 5 images at a time," ,font=("Times New Roman", 25))
+    time.sleep(2)
+    writer.clear()
+
+    writer.goto(-222,40)
+    writer.write("and they will disappear after a set amount of time.", font=("Times New Roman", 25)) 
+    time.sleep(2)
+    writer.clear()
+
+    writer.goto(-222,10)
+    writer.write("Try to guess what is missing!" ,font=("Times New Roman", 25)) 
+    time.sleep(2)
+    writer.clear()
+
+    writer.goto(-130,100)
+    writer.write("Click anywhere to begin", font=("Times New Roman", 25))
+
+    writer.textinput("What is your name?", "")
+    writer.clear()
 
 
-timer = 5
-counter_interval = 1000   #1000 represents 1 second
-timer_up = False
-writer.hideturtle()
-writer.penup()
-writer.goto(-230,170)
-writer.write(score,font=font_setup)
+    fruits_list = ["apple.gif", "banana.gif", "blueberry.gif", "strawberry.gif", "watermelon.gif"]
+    for fruit in fruits_list:
+        wn.addshape(fruit)
+
+    # click anywhere to begin and user will be asked for name
+    apple_image = trtl.Turtle()
+    apple_image.shape("apple.gif")
+    apple_image.penup()
+    apple_image.goto(150,300)
+
+
+    banana_image = trtl.Turtle()
+    banana_image.shape("banana.gif")
+    banana_image.penup()
+    banana_image.goto(-100,-100)
+
+    
+    blueberry_image = trtl.Turtle()
+    blueberry_image.shape("blueberry.gif")
+    blueberry_image.penup()
+    blueberry_image.goto(-300,250)
+
+        
+    strawberry_image = trtl.Turtle()
+    strawberry_image.shape("strawberry.gif")
+    strawberry_image.penup()
+    strawberry_image.goto(-370,-200)
+
+    
+    watermelon_image = trtl.Turtle()
+    watermelon_image.shape("watermelon.gif")
+    watermelon_image.penup()
+    watermelon_image.goto(280,-90)
+
+    wn.update()
+    time.sleep(5)
+    strawberry_image.hideturtle()
+
+    while True:
+        missing_fruit = trtl.textinput("Which fruit went missing?", "")
+        if missing_fruit == "strawberry":
+            update_score()
+            break
+        else:
+            pass
+wn.onscreenclick(click_anywhere)
+
+
+
+
+    
+
+
+# import images
+
+
+# timer
+# timer will show how many seconds the user has left to memorize everything on the screen before 1 disappears
+# timer will decrease every level by a few seconds
+
+
 
 
 
