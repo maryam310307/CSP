@@ -13,8 +13,8 @@ random_index = rand.randint(0, len(fruits_list)-1)
 missing_fruit = fruits_list.pop(random_index)
 
 
-trtl.hideturtle()
 trtl.penup()
+writer.hideturtle()
 trtl.goto(-222,200)
 trtl.write("What is missing?", font=("Times New Roman", 50))
 time.sleep(2)
