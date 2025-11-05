@@ -9,6 +9,9 @@ wn = trtl.Screen()
 writer = trtl.Turtle()
 fruit_turtles = []
 fruits_list = ["apple.gif", "banana.gif", "blueberry.gif", "strawberry.gif", "watermelon.gif"]
+random_index = rand.randint(0, len(fruits_list)-1)
+missing_fruit = fruits_list.pop(random_index)
+
 
 trtl.hideturtle()
 trtl.penup()
@@ -82,15 +85,12 @@ def click_anywhere(x, y):
 
     while True:
         missing_fruit = trtl.textinput("Which fruit went missing?", "")
-        if missing_fruit.strip().lower() == "strawberry":
+        if missing_fruit.strip().lower() == missing_fruit:
             update_score()
             break
         else:
             pass
             
-
-
-
 wn.onscreenclick(click_anywhere)
     
 
